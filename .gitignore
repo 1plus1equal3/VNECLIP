@@ -1,0 +1,8 @@
+dataset
+checkpoints_v2
+weights
+wandb*
+*.sh
+*.ipynb
+*.pyc
+__pycache__/
