@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Demo</title>
+    <!-- TailwindCSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+            
+            <!-- Header -->
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">
+                📷 Image Caption Demo
+            </h1>
+            
+            <!-- Video Stream Container -->
+            <div class="mb-6 relative bg-black rounded-lg overflow-hidden aspect-square">
+                <video 
+                    id="videoStream" 
+                    class="w-full h-full object-cover" 
+                    playsinline 
+                    autoplay 
+                    muted
+                ></video>
+                
+                <!-- Error message overlay (hidden by default) -->
+                <div 
+                    id="videoError" 
+                    class="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden"
+                >
+                    <div class="text-center">
+                        <p class="text-white text-base font-semibold mb-2">📵 Camera Access Denied</p>
+                        <p class="text-gray-300 text-sm">Check your browser permissions and try again.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Capture Button -->
+            <button 
+                id="captureBtn" 
+                class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 px-4 rounded-lg mb-6 active:bg-blue-800 transition text-lg"
+            >
+                Capture Frame
+            </button>
+            
+            <!-- Loading Indicator (hidden by default) -->
+            <div id="loadingState" class="hidden mb-6">
+                <div class="flex justify-center">
+                    <div class="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600"></div>
+                </div>
+                <p class="text-center text-gray-600 text-sm mt-3">Processing image...</p>
+            </div>
+            
+            <!-- Result Display (hidden by default) -->
+            <div id="resultContainer" class="hidden mb-6">
+                <label class="block text-gray-700 font-semibold mb-2">✅ Caption Result:</label>
+                <div 
+                    id="resultText" 
+                    class="w-full p-4 bg-blue-50 border-2 border-blue-300 rounded-lg text-gray-800 min-h-24 text-base leading-relaxed"
+                ></div>
+            </div>
+            
+            <!-- Error Display (hidden by default) -->
+            <div id="errorContainer" class="hidden mb-6">
+                <div class="p-4 bg-red-50 border-2 border-red-300 rounded-lg">
+                    <p class="text-red-700 font-semibold">⚠️ Error</p>
+                    <p id="errorText" class="text-red-600 text-sm mt-2 leading-relaxed"></p>
+                </div>
+            </div>
+            
+            <!-- Hidden Canvas for Image Processing -->
+            <!-- This canvas is used to resize the captured frame to 224x224 pixels -->
+            <canvas id="canvasCapture" width="224" height="224" style="display: none;"></canvas>
+            
+        </div>
+    </div>
+
+    <script>
+        // ============================================================================
+        // DOM Elements
+        // ============================================================================
+        const videoStream = document.getElementById('videoStream');
+        const captureBtn = document.getElementById('captureBtn');
+        const loadingState = document.getElementById('loadingState');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultText = document.getElementById('resultText');
+        const errorContainer = document.getElementById('errorContainer');
+        const errorText = document.getElementById('errorText');
+        const canvasCapture = document.getElementById('canvasCapture');
+        const videoError = document.getElementById('videoError');
+        
+        // Backend API endpoint
+        const API_URL = 'http://localhost:5000/predict';
+        
+        // ============================================================================
+        // Initialization
+        // ============================================================================
+        
+        /**
+         * Initialize the application when the page loads.
+         * Requests camera access and sets up event listeners.
+         */
+        window.addEventListener('load', initializeCamera);
+        
+        /**
+         * Request camera access and start streaming video from the device.
+         * Prefers the rear-facing camera on mobile devices.
+         */
+        async function initializeCamera() {
+            try {
+                // Request access to the device's camera
+                // facingMode: 'environment' requests the rear camera (preferred for mobile)
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: 'environment',  // Rear camera for mobile
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    },
+                    audio: false  // We don't need audio
+                });
+                
+                // Set the video source to the camera stream
+                videoStream.srcObject = stream;
+                
+                // Hide error message if previously shown
+                videoError.classList.add('hidden');
+                captureBtn.disabled = false;
+                
+            } catch (error) {
+                // Handle camera access denial or unavailability
+                console.error('Camera access error:', error);
+                showError('Camera access denied or not available. Please check your browser permissions.');
+                videoError.classList.remove('hidden');
+                captureBtn.disabled = true;
+            }
+        }
+        
+        // ============================================================================
+        // Event Listener: Capture Button
+        // ============================================================================
+        
+        /**
+         * Handle the "Capture Frame" button click.
+         * Captures a frame from the video, sends it to the backend, and displays the result.
+         */
+        captureBtn.addEventListener('click', async function() {
+            try {
+                // Clear previous results
+                resultContainer.classList.add('hidden');
+                errorContainer.classList.add('hidden');
+                
+                // Show loading state
+                loadingState.classList.remove('hidden');
+                captureBtn.disabled = true;
+                
+                // Step 1: Capture and resize the frame to 224x224 JPEG
+                const imageBlob = await captureFrame();
+                
+                // Step 2: Send the image to the backend
+                await sendToBackend(imageBlob);
+                
+            } catch (error) {
+                // Handle any errors during capture or upload
+                console.error('Capture error:', error);
+                showError(error.message);
+            } finally {
+                // Always hide loading state and re-enable button
+                loadingState.classList.add('hidden');
+                captureBtn.disabled = false;
+            }
+        });
+        
+        // ============================================================================
+        // Image Capture Logic
+        // ============================================================================
+        
+        /**
+         * Capture a frame from the video stream, resize to 224x224 pixels, 
+         * and export as a JPEG blob (ensures 3 RGB channels, no alpha).
+         * 
+         * The captured frame is centered within the 224x224 canvas to preserve
+         * the aspect ratio of the original video feed.
+         * 
+         * @returns {Promise<Blob>} JPEG image blob with 224x224 dimensions and RGB channels
+         * @throws {Error} If video is not ready or canvas export fails
+         */
+        async function captureFrame() {
+            return new Promise((resolve, reject) => {
+                try {
+                    // Verify that the video stream is ready
+                    if (videoStream.videoWidth === 0 || videoStream.videoHeight === 0) {
+                        reject(new Error('Video stream not ready. Please wait a moment and try again.'));
+                        return;
+                    }
+                    
+                    // Get the 2D rendering context for the canvas
+                    const ctx = canvasCapture.getContext('2d');
+                    
+                    // Calculate dimensions to fit the video frame into the 224x224 canvas
+                    // while preserving the video's aspect ratio
+                    const videoAspect = videoStream.videoWidth / videoStream.videoHeight;
+                    const canvasSize = 224;
+                    
+                    let drawWidth, drawHeight, offsetX, offsetY;
+                    
+                    if (videoAspect > 1) {
+                        // Video is wider than tall (landscape)
+                        drawHeight = canvasSize;
+                        drawWidth = canvasSize * videoAspect;
+                        offsetX = -(drawWidth - canvasSize) / 2;  // Center horizontally
+                        offsetY = 0;
+                    } else {
+                        // Video is taller than wide (portrait)
+                        drawWidth = canvasSize;
+                        drawHeight = canvasSize / videoAspect;
+                        offsetX = 0;
+                        offsetY = -(drawHeight - canvasSize) / 2;  // Center vertically
+                    }
+                    
+                    // Fill canvas with black background (in case of aspect ratio mismatch)
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvasSize, canvasSize);
+                    
+                    // Draw the video frame onto the canvas (centered)
+                    ctx.drawImage(videoStream, offsetX, offsetY, drawWidth, drawHeight);
+                    
+                    // Export the canvas as a JPEG blob with RGB channels (no alpha)
+                    // JPEG format automatically ensures 3 RGB channels
+                    canvasCapture.toBlob(
+                        (blob) => {
+                            if (blob) {
+                                resolve(blob);
+                            } else {
+                                reject(new Error('Failed to encode image as JPEG'));
+                            }
+                        },
+                        'image/jpeg',     // MIME type: JPEG (RGB, no alpha channel)
+                        0.95               // Quality: 0.95 (95% quality, good compression)
+                    );
+                    
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        }
+        
+        // ============================================================================
+        // Backend Communication
+        // ============================================================================
+        
+        /**
+         * Send the captured image to the backend API via a POST request.
+         * The image is sent as multipart/form-data with the file field named 'image'.
+         * 
+         * @param {Blob} imageBlob - The JPEG image blob to send (224x224 pixels)
+         * @throws {Error} If the API request fails or returns invalid response
+         */
+        async function sendToBackend(imageBlob) {
+            try {
+                // Create a FormData object to hold the image file
+                const formData = new FormData();
+                formData.append('image', imageBlob, 'capture.jpg');
+                
+                // Send a POST request to the backend API
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                    // Note: Do NOT set Content-Type header; the browser will set it automatically
+                    // with the correct boundary for multipart/form-data
+                });
+                
+                // Check if the response status is OK (200-299)
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status} ${response.statusText}`);
+                }
+                
+                // Parse the JSON response
+                const data = await response.json();
+                
+                // Verify that the response contains the expected 'caption' field
+                if (data.caption) {
+                    // Display the caption to the user
+                    resultText.textContent = data.caption;
+                    resultContainer.classList.remove('hidden');
+                } else {
+                    throw new Error('Invalid response from server: missing caption field');
+                }
+                
+            } catch (error) {
+                console.error('API error:', error);
+                
+                // Provide helpful error messages based on the error type
+                if (error.message.includes('Failed to fetch')) {
+                    showError('Cannot reach the server. Make sure the backend is running at http://localhost:8000');
+                } else {
+                    showError(`API Error: ${error.message}`);
+                }
+            }
+        }
+        
+        // ============================================================================
+        // Utility Functions
+        // ============================================================================
+        
+        /**
+         * Display an error message to the user in the error container.
+         * 
+         * @param {string} message - The error message to display
+         */
+        function showError(message) {
+            errorText.textContent = message;
+            errorContainer.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -16,3 +16,6 @@ accelerate
 opencv-python-headless
 underthesea
 einops
+torchmetrics
+wandb
+pyarrow

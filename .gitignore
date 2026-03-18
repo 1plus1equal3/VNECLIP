@@ -1,5 +1,7 @@
 dataset
-checkpoints_v2
+checkpoints_*
+*_ckpt_*
+*.log
 dataset/*
 weights/*
 wandb*
@@ -8,3 +10,9 @@ wandb*
 *.pyc
 __pycache__/
 !wandb_logger.py
+!evaluation.ipynb
+*.pth
+*.pt
+*.npy
+*.vscode
+*.zip

@@ -14,6 +14,7 @@ from PIL import Image
 from datasets import load_dataset
 from transformers import AutoTokenizer
 from clip_dataset import CLIPDataset
+from vnclip_dataset import VNClipDataset
 from model import *
 from checkpoint import CheckpointManager
 from wandb_logger import WandbLogger
@@ -69,7 +70,7 @@ val_raw_dataset = val_hf_dataset['train']
 
 # Define transformations for training and validation sets
 train_transform = T.Compose([
-    T.RandomResizedCrop(224, interpolation=T.InterpolationMode.BICUBIC),
+    T.Resize((224, 224), interpolation=T.InterpolationMode.BICUBIC),
     T.RandomHorizontalFlip(),
     T.ToTensor(),
     T.Normalize(
@@ -79,8 +80,8 @@ train_transform = T.Compose([
 ])
 
 val_transform = T.Compose([
-    T.Resize(256, interpolation=T.InterpolationMode.BICUBIC),
-    T.CenterCrop(224),
+    T.Resize((224, 224), interpolation=T.InterpolationMode.BICUBIC),
+    # T.CenterCrop(224),
     T.ToTensor(),
     T.Normalize(
         mean=[0.48145466, 0.4578275, 0.40821073],
@@ -94,9 +95,9 @@ val_dataset = CLIPDataset(val_raw_dataset, tokenizer, transform=val_transform)
 # test_dataset = CLIPDataset(test_raw_dataset, tokenizer, transform=val_transform)
 
 # Build dataloaders for training and validation
-BATCH_SIZE = 192
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=8, pin_memory=True)
-val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=4, pin_memory=True)
+BATCH_SIZE = 2048
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=8, pin_memory=True, drop_last=True)
+val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=4, pin_memory=True, drop_last=True)
 # test_loader = DataLoader(test_dataset, batch_size=128, shuffle=True, num_workers=4, pin_memory=True)
 
 # Initialize model components
@@ -129,7 +130,7 @@ cfg = {
     "vision_prj_cfg": prj_cfg,
     "text_prj_cfg": prj_cfg
 }
-vnclip = VNECLIP(**cfg).to(DEVICE)
+vnclip = VNECLIP_v1(**cfg).to(DEVICE)
 print(f"Model architecture:\n{vnclip}")
 total, trainable = count_params(vnclip)
 print(f"Total parameters: {total}")
@@ -141,12 +142,12 @@ def set_gradient_state(model, requires_grad):
     for param in model.parameters():
         param.requires_grad = requires_grad
 
-# #! TEMPORARY FREEZE VISION ENCODER and TEXT ENCODER
-set_gradient_state(vnclip.vision_encoder, True)
-set_gradient_state(vnclip.text_encoder, True)
+#! TEMPORARY FREEZE VISION ENCODER and TEXT ENCODER
+set_gradient_state(vnclip.vision_encoder, False)
+set_gradient_state(vnclip.text_encoder, False)
 
 # Initialize optimizer (AdamW)
-optimizer = optim.AdamW(vnclip.parameters(), lr=1e-4)
+optimizer = optim.AdamW(vnclip.parameters(), lr=5e-5)
 
 # Initialize metrics
 training_metrics = {
@@ -156,14 +157,14 @@ training_metrics = {
 eval_metrics = deepcopy(training_metrics)
 
 # Initialize checkpoint manager
-checkpoint_manager = CheckpointManager(save_dir='/root/Project/brick_vidgen/vnclip/checkpoints_v2', max_checkpoints=10)
+checkpoint_manager = CheckpointManager(save_dir='/root/Project/brick_vidgen/vnclip/checkpoints_v3_160326', max_checkpoints=10)
 start_epoch = 1  # Default start epoch if no checkpoint is found
-try:
-    ckpt_path = "/root/Project/brick_vidgen/vnclip/checkpoints_v2/checkpoint_epoch_10_2026-03-14.pth"
-    start_epoch, _ = checkpoint_manager.load_checkpoint(vnclip, optimizer, ckpt_path)
-    print(f"Resuming training from epoch {start_epoch}")
-except IndexError:
-    print("No checkpoint found, starting training from scratch.")
+# try:
+#     ckpt_path = "/root/Project/brick_vidgen/vnclip/checkpoints_v2/checkpoint_epoch_12_2026-03-14.pth"
+#     start_epoch, _ = checkpoint_manager.load_checkpoint(vnclip, optimizer, ckpt_path)
+#     print(f"Resuming training from epoch {start_epoch}")
+# except IndexError:
+#     print("No checkpoint found, starting training from scratch.")
 
 # optimizer = optim.AdamW(vnclip.parameters(), lr=5e-5)
 
