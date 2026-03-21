@@ -16,3 +16,7 @@ __pycache__/
 *.npy
 *.vscode
 *.zip
+deploy/weight/*
+deploy/mm_rag/data/*
+deploy/sample/*
+deploy/mm_rag/clip_db/*

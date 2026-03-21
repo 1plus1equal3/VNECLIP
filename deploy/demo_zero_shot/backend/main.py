@@ -7,10 +7,13 @@ Ready for ML model integration in the future.
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
-from inference import build_vision_tower, zero_shot_classify
+# from inference import build_vision_tower, zero_shot_classify
+from inference_onnx import ONNXVisionTower, zero_shot_classify
 
 # Load vision tower and prompt data at startup
-vision_tower = build_vision_tower()
+# vision_tower = build_vision_tower()
+# Load ONNX vision tower at startup
+vision_tower = ONNXVisionTower()
 
 # Initialize FastAPI application
 app = FastAPI(title="Image Caption API", version="1.0.0")
@@ -52,7 +55,7 @@ async def predict(image: UploadFile = File(...)):
     """
     # Convert image to PIL format
     pil_image = Image.open(image.file)
-    # Predict caption using zero-shot classification with the vision tower and prompt embeddings
+    # Predict caption using zero-shot classification with ONNX vision tower
     captions = zero_shot_classify(pil_image, vision_tower, top_k=1)
     return {
         "caption": captions[0] if captions else "No caption generated."

@@ -1,90 +1,630 @@
-Đây là bức ảnh về người
-Đây là bức ảnh về xe đạp
-Đây là bức ảnh về ô tô
-Đây là bức ảnh về xe máy
-Đây là bức ảnh về máy bay
-Đây là bức ảnh về xe buýt
-Đây là bức ảnh về tàu hỏa
-Đây là bức ảnh về xe tải
-Đây là bức ảnh về tàu thuyền
-Đây là bức ảnh về dèn giao thông
-Đây là bức ảnh về trụ cứu hỏa
-Đây là bức ảnh về biển báo đường phố
-Đây là bức ảnh về biển báo dừng
-Đây là bức ảnh về đồng hồ đậu xe
-Đây là bức ảnh về ghế dài
-Đây là bức ảnh về chim
-Đây là bức ảnh về mèo
-Đây là bức ảnh về chó
-Đây là bức ảnh về ngựa
-Đây là bức ảnh về cừu
-Đây là bức ảnh về bò
-Đây là bức ảnh về voi
-Đây là bức ảnh về gấu
-Đây là bức ảnh về ngựa vằn
-Đây là bức ảnh về hươu cao cổ
-Đây là bức ảnh về mũ
-Đây là bức ảnh về ba lô
-Đây là bức ảnh về ô
-Đây là bức ảnh về giày
-Đây là bức ảnh về kính mắt
-Đây là bức ảnh về túi xách
-Đây là bức ảnh về cà vạt
-Đây là bức ảnh về vali
-Đây là bức ảnh về đĩa bay
-Đây là bức ảnh về ván trượt tuyết
-Đây là bức ảnh về bóng thể thao
-Đây là bức ảnh về diều
-Đây là bức ảnh về gậy bóng chày
-Đây là bức ảnh về găng tay bóng chày
-Đây là bức ảnh về ván trượt
-Đây là bức ảnh về ván lướt sóng
-Đây là bức ảnh về vợt tennis
-Đây là bức ảnh về chai
-Đây là bức ảnh về đĩa
-Đây là bức ảnh về cốc rượu
-Đây là bức ảnh về cốc
-Đây là bức ảnh về nĩa
-Đây là bức ảnh về dao
-Đây là bức ảnh về muỗng
-Đây là bức ảnh về bát
-Đây là bức ảnh về chuối
-Đây là bức ảnh về táo
-Đây là bức ảnh về bánh mì kẹp
-Đây là bức ảnh về cam
-Đây là bức ảnh về bông cải xanh
-Đây là bức ảnh về cà rốt
-Đây là bức ảnh về xúc xích
-Đây là bức ảnh về pizza
-Đây là bức ảnh về bánh rán
-Đây là bức ảnh về bánh ngọt
-Đây là bức ảnh về ghế
-Đây là bức ảnh về ghế sofa
-Đây là bức ảnh về cây trong chậu
-Đây là bức ảnh về giường
-Đây là bức ảnh về gương
-Đây là bức ảnh về bàn ăn
-Đây là bức ảnh về cửa sổ
-Đây là bức ảnh về bàn làm việc
-Đây là bức ảnh về bồn cầu
-Đây là bức ảnh về cửa
-Đây là bức ảnh về tivi
-Đây là bức ảnh về máy tính xách tay
-Đây là bức ảnh về chuột
-Đây là bức ảnh về điều khiển từ xa
-Đây là bức ảnh về bàn phím
-Đây là bức ảnh về điện thoại di động
-Đây là bức ảnh về lò vi sóng
-Đây là bức ảnh về lò nướng
-Đây là bức ảnh về máy nướng bánh mì
-Đây là bức ảnh về bồn rửa
-Đây là bức ảnh về tủ lạnh
-Đây là bức ảnh về máy xay sinh tố
-Đây là bức ảnh về sách
-Đây là bức ảnh về đồng hồ
-Đây là bức ảnh về bình hoa
-Đây là bức ảnh về kéo
-Đây là bức ảnh về gấu bông
-Đây là bức ảnh về máy sấy tóc
-Đây là bức ảnh về bàn chải đánh răng
-Đây là bức ảnh về lược
+Một bức ảnh chụp về người.
+Một bức ảnh chụp về xe đạp.
+Một bức ảnh chụp về ô tô.
+Một bức ảnh chụp về xe máy.
+Một bức ảnh chụp về máy bay.
+Một bức ảnh chụp về xe buýt.
+Một bức ảnh chụp về tàu hỏa.
+Một bức ảnh chụp về xe tải.
+Một bức ảnh chụp về tàu thuyền.
+Một bức ảnh chụp về dèn giao thông.
+Một bức ảnh chụp về trụ cứu hỏa.
+Một bức ảnh chụp về biển báo đường phố.
+Một bức ảnh chụp về biển báo dừng.
+Một bức ảnh chụp về đồng hồ đậu xe.
+Một bức ảnh chụp về ghế dài.
+Một bức ảnh chụp về chim.
+Một bức ảnh chụp về mèo.
+Một bức ảnh chụp về chó.
+Một bức ảnh chụp về ngựa.
+Một bức ảnh chụp về cừu.
+Một bức ảnh chụp về bò.
+Một bức ảnh chụp về voi.
+Một bức ảnh chụp về gấu.
+Một bức ảnh chụp về ngựa vằn.
+Một bức ảnh chụp về hươu cao cổ.
+Một bức ảnh chụp về mũ.
+Một bức ảnh chụp về ba lô.
+Một bức ảnh chụp về ô.
+Một bức ảnh chụp về giày.
+Một bức ảnh chụp về kính mắt.
+Một bức ảnh chụp về túi xách.
+Một bức ảnh chụp về cà vạt.
+Một bức ảnh chụp về vali.
+Một bức ảnh chụp về đĩa bay.
+Một bức ảnh chụp về ván trượt tuyết.
+Một bức ảnh chụp về bóng thể thao.
+Một bức ảnh chụp về diều.
+Một bức ảnh chụp về gậy bóng chày.
+Một bức ảnh chụp về găng tay bóng chày.
+Một bức ảnh chụp về ván trượt.
+Một bức ảnh chụp về ván lướt sóng.
+Một bức ảnh chụp về vợt tennis.
+Một bức ảnh chụp về chai.
+Một bức ảnh chụp về đĩa.
+Một bức ảnh chụp về cốc rượu.
+Một bức ảnh chụp về cốc.
+Một bức ảnh chụp về nĩa.
+Một bức ảnh chụp về dao.
+Một bức ảnh chụp về muỗng.
+Một bức ảnh chụp về bát.
+Một bức ảnh chụp về chuối.
+Một bức ảnh chụp về táo.
+Một bức ảnh chụp về bánh mì kẹp.
+Một bức ảnh chụp về cam.
+Một bức ảnh chụp về bông cải xanh.
+Một bức ảnh chụp về cà rốt.
+Một bức ảnh chụp về xúc xích.
+Một bức ảnh chụp về pizza.
+Một bức ảnh chụp về bánh rán.
+Một bức ảnh chụp về bánh ngọt.
+Một bức ảnh chụp về ghế.
+Một bức ảnh chụp về ghế sofa.
+Một bức ảnh chụp về cây trong chậu.
+Một bức ảnh chụp về giường.
+Một bức ảnh chụp về gương.
+Một bức ảnh chụp về bàn ăn.
+Một bức ảnh chụp về cửa sổ.
+Một bức ảnh chụp về bàn làm việc.
+Một bức ảnh chụp về bồn cầu.
+Một bức ảnh chụp về cửa.
+Một bức ảnh chụp về tivi.
+Một bức ảnh chụp về máy tính xách tay.
+Một bức ảnh chụp về chuột.
+Một bức ảnh chụp về điều khiển từ xa.
+Một bức ảnh chụp về bàn phím.
+Một bức ảnh chụp về điện thoại di động.
+Một bức ảnh chụp về lò vi sóng.
+Một bức ảnh chụp về lò nướng.
+Một bức ảnh chụp về máy nướng bánh mì.
+Một bức ảnh chụp về bồn rửa.
+Một bức ảnh chụp về tủ lạnh.
+Một bức ảnh chụp về máy xay sinh tố.
+Một bức ảnh chụp về sách.
+Một bức ảnh chụp về đồng hồ.
+Một bức ảnh chụp về bình hoa.
+Một bức ảnh chụp về kéo.
+Một bức ảnh chụp về gấu bông.
+Một bức ảnh chụp về máy sấy tóc.
+Một bức ảnh chụp về bàn chải đánh răng.
+Một bức ảnh chụp về lược.
+Ảnh chụp cảnh người trong đời sống.
+Ảnh chụp cảnh xe đạp trong đời sống.
+Ảnh chụp cảnh ô tô trong đời sống.
+Ảnh chụp cảnh xe máy trong đời sống.
+Ảnh chụp cảnh máy bay trong đời sống.
+Ảnh chụp cảnh xe buýt trong đời sống.
+Ảnh chụp cảnh tàu hỏa trong đời sống.
+Ảnh chụp cảnh xe tải trong đời sống.
+Ảnh chụp cảnh tàu thuyền trong đời sống.
+Ảnh chụp cảnh dèn giao thông trong đời sống.
+Ảnh chụp cảnh trụ cứu hỏa trong đời sống.
+Ảnh chụp cảnh biển báo đường phố trong đời sống.
+Ảnh chụp cảnh biển báo dừng trong đời sống.
+Ảnh chụp cảnh đồng hồ đậu xe trong đời sống.
+Ảnh chụp cảnh ghế dài trong đời sống.
+Ảnh chụp cảnh chim trong đời sống.
+Ảnh chụp cảnh mèo trong đời sống.
+Ảnh chụp cảnh chó trong đời sống.
+Ảnh chụp cảnh ngựa trong đời sống.
+Ảnh chụp cảnh cừu trong đời sống.
+Ảnh chụp cảnh bò trong đời sống.
+Ảnh chụp cảnh voi trong đời sống.
+Ảnh chụp cảnh gấu trong đời sống.
+Ảnh chụp cảnh ngựa vằn trong đời sống.
+Ảnh chụp cảnh hươu cao cổ trong đời sống.
+Ảnh chụp cảnh mũ trong đời sống.
+Ảnh chụp cảnh ba lô trong đời sống.
+Ảnh chụp cảnh ô trong đời sống.
+Ảnh chụp cảnh giày trong đời sống.
+Ảnh chụp cảnh kính mắt trong đời sống.
+Ảnh chụp cảnh túi xách trong đời sống.
+Ảnh chụp cảnh cà vạt trong đời sống.
+Ảnh chụp cảnh vali trong đời sống.
+Ảnh chụp cảnh đĩa bay trong đời sống.
+Ảnh chụp cảnh ván trượt tuyết trong đời sống.
+Ảnh chụp cảnh bóng thể thao trong đời sống.
+Ảnh chụp cảnh diều trong đời sống.
+Ảnh chụp cảnh gậy bóng chày trong đời sống.
+Ảnh chụp cảnh găng tay bóng chày trong đời sống.
+Ảnh chụp cảnh ván trượt trong đời sống.
+Ảnh chụp cảnh ván lướt sóng trong đời sống.
+Ảnh chụp cảnh vợt tennis trong đời sống.
+Ảnh chụp cảnh chai trong đời sống.
+Ảnh chụp cảnh đĩa trong đời sống.
+Ảnh chụp cảnh cốc rượu trong đời sống.
+Ảnh chụp cảnh cốc trong đời sống.
+Ảnh chụp cảnh nĩa trong đời sống.
+Ảnh chụp cảnh dao trong đời sống.
+Ảnh chụp cảnh muỗng trong đời sống.
+Ảnh chụp cảnh bát trong đời sống.
+Ảnh chụp cảnh chuối trong đời sống.
+Ảnh chụp cảnh táo trong đời sống.
+Ảnh chụp cảnh bánh mì kẹp trong đời sống.
+Ảnh chụp cảnh cam trong đời sống.
+Ảnh chụp cảnh bông cải xanh trong đời sống.
+Ảnh chụp cảnh cà rốt trong đời sống.
+Ảnh chụp cảnh xúc xích trong đời sống.
+Ảnh chụp cảnh pizza trong đời sống.
+Ảnh chụp cảnh bánh rán trong đời sống.
+Ảnh chụp cảnh bánh ngọt trong đời sống.
+Ảnh chụp cảnh ghế trong đời sống.
+Ảnh chụp cảnh ghế sofa trong đời sống.
+Ảnh chụp cảnh cây trong chậu trong đời sống.
+Ảnh chụp cảnh giường trong đời sống.
+Ảnh chụp cảnh gương trong đời sống.
+Ảnh chụp cảnh bàn ăn trong đời sống.
+Ảnh chụp cảnh cửa sổ trong đời sống.
+Ảnh chụp cảnh bàn làm việc trong đời sống.
+Ảnh chụp cảnh bồn cầu trong đời sống.
+Ảnh chụp cảnh cửa trong đời sống.
+Ảnh chụp cảnh tivi trong đời sống.
+Ảnh chụp cảnh máy tính xách tay trong đời sống.
+Ảnh chụp cảnh chuột trong đời sống.
+Ảnh chụp cảnh điều khiển từ xa trong đời sống.
+Ảnh chụp cảnh bàn phím trong đời sống.
+Ảnh chụp cảnh điện thoại di động trong đời sống.
+Ảnh chụp cảnh lò vi sóng trong đời sống.
+Ảnh chụp cảnh lò nướng trong đời sống.
+Ảnh chụp cảnh máy nướng bánh mì trong đời sống.
+Ảnh chụp cảnh bồn rửa trong đời sống.
+Ảnh chụp cảnh tủ lạnh trong đời sống.
+Ảnh chụp cảnh máy xay sinh tố trong đời sống.
+Ảnh chụp cảnh sách trong đời sống.
+Ảnh chụp cảnh đồng hồ trong đời sống.
+Ảnh chụp cảnh bình hoa trong đời sống.
+Ảnh chụp cảnh kéo trong đời sống.
+Ảnh chụp cảnh gấu bông trong đời sống.
+Ảnh chụp cảnh máy sấy tóc trong đời sống.
+Ảnh chụp cảnh bàn chải đánh răng trong đời sống.
+Ảnh chụp cảnh lược trong đời sống.
+Một hình ảnh mô tả người.
+Một hình ảnh mô tả xe đạp.
+Một hình ảnh mô tả ô tô.
+Một hình ảnh mô tả xe máy.
+Một hình ảnh mô tả máy bay.
+Một hình ảnh mô tả xe buýt.
+Một hình ảnh mô tả tàu hỏa.
+Một hình ảnh mô tả xe tải.
+Một hình ảnh mô tả tàu thuyền.
+Một hình ảnh mô tả dèn giao thông.
+Một hình ảnh mô tả trụ cứu hỏa.
+Một hình ảnh mô tả biển báo đường phố.
+Một hình ảnh mô tả biển báo dừng.
+Một hình ảnh mô tả đồng hồ đậu xe.
+Một hình ảnh mô tả ghế dài.
+Một hình ảnh mô tả chim.
+Một hình ảnh mô tả mèo.
+Một hình ảnh mô tả chó.
+Một hình ảnh mô tả ngựa.
+Một hình ảnh mô tả cừu.
+Một hình ảnh mô tả bò.
+Một hình ảnh mô tả voi.
+Một hình ảnh mô tả gấu.
+Một hình ảnh mô tả ngựa vằn.
+Một hình ảnh mô tả hươu cao cổ.
+Một hình ảnh mô tả mũ.
+Một hình ảnh mô tả ba lô.
+Một hình ảnh mô tả ô.
+Một hình ảnh mô tả giày.
+Một hình ảnh mô tả kính mắt.
+Một hình ảnh mô tả túi xách.
+Một hình ảnh mô tả cà vạt.
+Một hình ảnh mô tả vali.
+Một hình ảnh mô tả đĩa bay.
+Một hình ảnh mô tả ván trượt tuyết.
+Một hình ảnh mô tả bóng thể thao.
+Một hình ảnh mô tả diều.
+Một hình ảnh mô tả gậy bóng chày.
+Một hình ảnh mô tả găng tay bóng chày.
+Một hình ảnh mô tả ván trượt.
+Một hình ảnh mô tả ván lướt sóng.
+Một hình ảnh mô tả vợt tennis.
+Một hình ảnh mô tả chai.
+Một hình ảnh mô tả đĩa.
+Một hình ảnh mô tả cốc rượu.
+Một hình ảnh mô tả cốc.
+Một hình ảnh mô tả nĩa.
+Một hình ảnh mô tả dao.
+Một hình ảnh mô tả muỗng.
+Một hình ảnh mô tả bát.
+Một hình ảnh mô tả chuối.
+Một hình ảnh mô tả táo.
+Một hình ảnh mô tả bánh mì kẹp.
+Một hình ảnh mô tả cam.
+Một hình ảnh mô tả bông cải xanh.
+Một hình ảnh mô tả cà rốt.
+Một hình ảnh mô tả xúc xích.
+Một hình ảnh mô tả pizza.
+Một hình ảnh mô tả bánh rán.
+Một hình ảnh mô tả bánh ngọt.
+Một hình ảnh mô tả ghế.
+Một hình ảnh mô tả ghế sofa.
+Một hình ảnh mô tả cây trong chậu.
+Một hình ảnh mô tả giường.
+Một hình ảnh mô tả gương.
+Một hình ảnh mô tả bàn ăn.
+Một hình ảnh mô tả cửa sổ.
+Một hình ảnh mô tả bàn làm việc.
+Một hình ảnh mô tả bồn cầu.
+Một hình ảnh mô tả cửa.
+Một hình ảnh mô tả tivi.
+Một hình ảnh mô tả máy tính xách tay.
+Một hình ảnh mô tả chuột.
+Một hình ảnh mô tả điều khiển từ xa.
+Một hình ảnh mô tả bàn phím.
+Một hình ảnh mô tả điện thoại di động.
+Một hình ảnh mô tả lò vi sóng.
+Một hình ảnh mô tả lò nướng.
+Một hình ảnh mô tả máy nướng bánh mì.
+Một hình ảnh mô tả bồn rửa.
+Một hình ảnh mô tả tủ lạnh.
+Một hình ảnh mô tả máy xay sinh tố.
+Một hình ảnh mô tả sách.
+Một hình ảnh mô tả đồng hồ.
+Một hình ảnh mô tả bình hoa.
+Một hình ảnh mô tả kéo.
+Một hình ảnh mô tả gấu bông.
+Một hình ảnh mô tả máy sấy tóc.
+Một hình ảnh mô tả bàn chải đánh răng.
+Một hình ảnh mô tả lược.
+Trong ảnh có người.
+Trong ảnh có xe đạp.
+Trong ảnh có ô tô.
+Trong ảnh có xe máy.
+Trong ảnh có máy bay.
+Trong ảnh có xe buýt.
+Trong ảnh có tàu hỏa.
+Trong ảnh có xe tải.
+Trong ảnh có tàu thuyền.
+Trong ảnh có dèn giao thông.
+Trong ảnh có trụ cứu hỏa.
+Trong ảnh có biển báo đường phố.
+Trong ảnh có biển báo dừng.
+Trong ảnh có đồng hồ đậu xe.
+Trong ảnh có ghế dài.
+Trong ảnh có chim.
+Trong ảnh có mèo.
+Trong ảnh có chó.
+Trong ảnh có ngựa.
+Trong ảnh có cừu.
+Trong ảnh có bò.
+Trong ảnh có voi.
+Trong ảnh có gấu.
+Trong ảnh có ngựa vằn.
+Trong ảnh có hươu cao cổ.
+Trong ảnh có mũ.
+Trong ảnh có ba lô.
+Trong ảnh có ô.
+Trong ảnh có giày.
+Trong ảnh có kính mắt.
+Trong ảnh có túi xách.
+Trong ảnh có cà vạt.
+Trong ảnh có vali.
+Trong ảnh có đĩa bay.
+Trong ảnh có ván trượt tuyết.
+Trong ảnh có bóng thể thao.
+Trong ảnh có diều.
+Trong ảnh có gậy bóng chày.
+Trong ảnh có găng tay bóng chày.
+Trong ảnh có ván trượt.
+Trong ảnh có ván lướt sóng.
+Trong ảnh có vợt tennis.
+Trong ảnh có chai.
+Trong ảnh có đĩa.
+Trong ảnh có cốc rượu.
+Trong ảnh có cốc.
+Trong ảnh có nĩa.
+Trong ảnh có dao.
+Trong ảnh có muỗng.
+Trong ảnh có bát.
+Trong ảnh có chuối.
+Trong ảnh có táo.
+Trong ảnh có bánh mì kẹp.
+Trong ảnh có cam.
+Trong ảnh có bông cải xanh.
+Trong ảnh có cà rốt.
+Trong ảnh có xúc xích.
+Trong ảnh có pizza.
+Trong ảnh có bánh rán.
+Trong ảnh có bánh ngọt.
+Trong ảnh có ghế.
+Trong ảnh có ghế sofa.
+Trong ảnh có cây trong chậu.
+Trong ảnh có giường.
+Trong ảnh có gương.
+Trong ảnh có bàn ăn.
+Trong ảnh có cửa sổ.
+Trong ảnh có bàn làm việc.
+Trong ảnh có bồn cầu.
+Trong ảnh có cửa.
+Trong ảnh có tivi.
+Trong ảnh có máy tính xách tay.
+Trong ảnh có chuột.
+Trong ảnh có điều khiển từ xa.
+Trong ảnh có bàn phím.
+Trong ảnh có điện thoại di động.
+Trong ảnh có lò vi sóng.
+Trong ảnh có lò nướng.
+Trong ảnh có máy nướng bánh mì.
+Trong ảnh có bồn rửa.
+Trong ảnh có tủ lạnh.
+Trong ảnh có máy xay sinh tố.
+Trong ảnh có sách.
+Trong ảnh có đồng hồ.
+Trong ảnh có bình hoa.
+Trong ảnh có kéo.
+Trong ảnh có gấu bông.
+Trong ảnh có máy sấy tóc.
+Trong ảnh có bàn chải đánh răng.
+Trong ảnh có lược.
+Bức ảnh này thể hiện về người.
+Bức ảnh này thể hiện về xe đạp.
+Bức ảnh này thể hiện về ô tô.
+Bức ảnh này thể hiện về xe máy.
+Bức ảnh này thể hiện về máy bay.
+Bức ảnh này thể hiện về xe buýt.
+Bức ảnh này thể hiện về tàu hỏa.
+Bức ảnh này thể hiện về xe tải.
+Bức ảnh này thể hiện về tàu thuyền.
+Bức ảnh này thể hiện về dèn giao thông.
+Bức ảnh này thể hiện về trụ cứu hỏa.
+Bức ảnh này thể hiện về biển báo đường phố.
+Bức ảnh này thể hiện về biển báo dừng.
+Bức ảnh này thể hiện về đồng hồ đậu xe.
+Bức ảnh này thể hiện về ghế dài.
+Bức ảnh này thể hiện về chim.
+Bức ảnh này thể hiện về mèo.
+Bức ảnh này thể hiện về chó.
+Bức ảnh này thể hiện về ngựa.
+Bức ảnh này thể hiện về cừu.
+Bức ảnh này thể hiện về bò.
+Bức ảnh này thể hiện về voi.
+Bức ảnh này thể hiện về gấu.
+Bức ảnh này thể hiện về ngựa vằn.
+Bức ảnh này thể hiện về hươu cao cổ.
+Bức ảnh này thể hiện về mũ.
+Bức ảnh này thể hiện về ba lô.
+Bức ảnh này thể hiện về ô.
+Bức ảnh này thể hiện về giày.
+Bức ảnh này thể hiện về kính mắt.
+Bức ảnh này thể hiện về túi xách.
+Bức ảnh này thể hiện về cà vạt.
+Bức ảnh này thể hiện về vali.
+Bức ảnh này thể hiện về đĩa bay.
+Bức ảnh này thể hiện về ván trượt tuyết.
+Bức ảnh này thể hiện về bóng thể thao.
+Bức ảnh này thể hiện về diều.
+Bức ảnh này thể hiện về gậy bóng chày.
+Bức ảnh này thể hiện về găng tay bóng chày.
+Bức ảnh này thể hiện về ván trượt.
+Bức ảnh này thể hiện về ván lướt sóng.
+Bức ảnh này thể hiện về vợt tennis.
+Bức ảnh này thể hiện về chai.
+Bức ảnh này thể hiện về đĩa.
+Bức ảnh này thể hiện về cốc rượu.
+Bức ảnh này thể hiện về cốc.
+Bức ảnh này thể hiện về nĩa.
+Bức ảnh này thể hiện về dao.
+Bức ảnh này thể hiện về muỗng.
+Bức ảnh này thể hiện về bát.
+Bức ảnh này thể hiện về chuối.
+Bức ảnh này thể hiện về táo.
+Bức ảnh này thể hiện về bánh mì kẹp.
+Bức ảnh này thể hiện về cam.
+Bức ảnh này thể hiện về bông cải xanh.
+Bức ảnh này thể hiện về cà rốt.
+Bức ảnh này thể hiện về xúc xích.
+Bức ảnh này thể hiện về pizza.
+Bức ảnh này thể hiện về bánh rán.
+Bức ảnh này thể hiện về bánh ngọt.
+Bức ảnh này thể hiện về ghế.
+Bức ảnh này thể hiện về ghế sofa.
+Bức ảnh này thể hiện về cây trong chậu.
+Bức ảnh này thể hiện về giường.
+Bức ảnh này thể hiện về gương.
+Bức ảnh này thể hiện về bàn ăn.
+Bức ảnh này thể hiện về cửa sổ.
+Bức ảnh này thể hiện về bàn làm việc.
+Bức ảnh này thể hiện về bồn cầu.
+Bức ảnh này thể hiện về cửa.
+Bức ảnh này thể hiện về tivi.
+Bức ảnh này thể hiện về máy tính xách tay.
+Bức ảnh này thể hiện về chuột.
+Bức ảnh này thể hiện về điều khiển từ xa.
+Bức ảnh này thể hiện về bàn phím.
+Bức ảnh này thể hiện về điện thoại di động.
+Bức ảnh này thể hiện về lò vi sóng.
+Bức ảnh này thể hiện về lò nướng.
+Bức ảnh này thể hiện về máy nướng bánh mì.
+Bức ảnh này thể hiện về bồn rửa.
+Bức ảnh này thể hiện về tủ lạnh.
+Bức ảnh này thể hiện về máy xay sinh tố.
+Bức ảnh này thể hiện về sách.
+Bức ảnh này thể hiện về đồng hồ.
+Bức ảnh này thể hiện về bình hoa.
+Bức ảnh này thể hiện về kéo.
+Bức ảnh này thể hiện về gấu bông.
+Bức ảnh này thể hiện về máy sấy tóc.
+Bức ảnh này thể hiện về bàn chải đánh răng.
+Bức ảnh này thể hiện về lược.
+Bức ảnh minh họa cho người.
+Bức ảnh minh họa cho xe đạp.
+Bức ảnh minh họa cho ô tô.
+Bức ảnh minh họa cho xe máy.
+Bức ảnh minh họa cho máy bay.
+Bức ảnh minh họa cho xe buýt.
+Bức ảnh minh họa cho tàu hỏa.
+Bức ảnh minh họa cho xe tải.
+Bức ảnh minh họa cho tàu thuyền.
+Bức ảnh minh họa cho dèn giao thông.
+Bức ảnh minh họa cho trụ cứu hỏa.
+Bức ảnh minh họa cho biển báo đường phố.
+Bức ảnh minh họa cho biển báo dừng.
+Bức ảnh minh họa cho đồng hồ đậu xe.
+Bức ảnh minh họa cho ghế dài.
+Bức ảnh minh họa cho chim.
+Bức ảnh minh họa cho mèo.
+Bức ảnh minh họa cho chó.
+Bức ảnh minh họa cho ngựa.
+Bức ảnh minh họa cho cừu.
+Bức ảnh minh họa cho bò.
+Bức ảnh minh họa cho voi.
+Bức ảnh minh họa cho gấu.
+Bức ảnh minh họa cho ngựa vằn.
+Bức ảnh minh họa cho hươu cao cổ.
+Bức ảnh minh họa cho mũ.
+Bức ảnh minh họa cho ba lô.
+Bức ảnh minh họa cho ô.
+Bức ảnh minh họa cho giày.
+Bức ảnh minh họa cho kính mắt.
+Bức ảnh minh họa cho túi xách.
+Bức ảnh minh họa cho cà vạt.
+Bức ảnh minh họa cho vali.
+Bức ảnh minh họa cho đĩa bay.
+Bức ảnh minh họa cho ván trượt tuyết.
+Bức ảnh minh họa cho bóng thể thao.
+Bức ảnh minh họa cho diều.
+Bức ảnh minh họa cho gậy bóng chày.
+Bức ảnh minh họa cho găng tay bóng chày.
+Bức ảnh minh họa cho ván trượt.
+Bức ảnh minh họa cho ván lướt sóng.
+Bức ảnh minh họa cho vợt tennis.
+Bức ảnh minh họa cho chai.
+Bức ảnh minh họa cho đĩa.
+Bức ảnh minh họa cho cốc rượu.
+Bức ảnh minh họa cho cốc.
+Bức ảnh minh họa cho nĩa.
+Bức ảnh minh họa cho dao.
+Bức ảnh minh họa cho muỗng.
+Bức ảnh minh họa cho bát.
+Bức ảnh minh họa cho chuối.
+Bức ảnh minh họa cho táo.
+Bức ảnh minh họa cho bánh mì kẹp.
+Bức ảnh minh họa cho cam.
+Bức ảnh minh họa cho bông cải xanh.
+Bức ảnh minh họa cho cà rốt.
+Bức ảnh minh họa cho xúc xích.
+Bức ảnh minh họa cho pizza.
+Bức ảnh minh họa cho bánh rán.
+Bức ảnh minh họa cho bánh ngọt.
+Bức ảnh minh họa cho ghế.
+Bức ảnh minh họa cho ghế sofa.
+Bức ảnh minh họa cho cây trong chậu.
+Bức ảnh minh họa cho giường.
+Bức ảnh minh họa cho gương.
+Bức ảnh minh họa cho bàn ăn.
+Bức ảnh minh họa cho cửa sổ.
+Bức ảnh minh họa cho bàn làm việc.
+Bức ảnh minh họa cho bồn cầu.
+Bức ảnh minh họa cho cửa.
+Bức ảnh minh họa cho tivi.
+Bức ảnh minh họa cho máy tính xách tay.
+Bức ảnh minh họa cho chuột.
+Bức ảnh minh họa cho điều khiển từ xa.
+Bức ảnh minh họa cho bàn phím.
+Bức ảnh minh họa cho điện thoại di động.
+Bức ảnh minh họa cho lò vi sóng.
+Bức ảnh minh họa cho lò nướng.
+Bức ảnh minh họa cho máy nướng bánh mì.
+Bức ảnh minh họa cho bồn rửa.
+Bức ảnh minh họa cho tủ lạnh.
+Bức ảnh minh họa cho máy xay sinh tố.
+Bức ảnh minh họa cho sách.
+Bức ảnh minh họa cho đồng hồ.
+Bức ảnh minh họa cho bình hoa.
+Bức ảnh minh họa cho kéo.
+Bức ảnh minh họa cho gấu bông.
+Bức ảnh minh họa cho máy sấy tóc.
+Bức ảnh minh họa cho bàn chải đánh răng.
+Bức ảnh minh họa cho lược.
+Một khung cảnh có người.
+Một khung cảnh có xe đạp.
+Một khung cảnh có ô tô.
+Một khung cảnh có xe máy.
+Một khung cảnh có máy bay.
+Một khung cảnh có xe buýt.
+Một khung cảnh có tàu hỏa.
+Một khung cảnh có xe tải.
+Một khung cảnh có tàu thuyền.
+Một khung cảnh có dèn giao thông.
+Một khung cảnh có trụ cứu hỏa.
+Một khung cảnh có biển báo đường phố.
+Một khung cảnh có biển báo dừng.
+Một khung cảnh có đồng hồ đậu xe.
+Một khung cảnh có ghế dài.
+Một khung cảnh có chim.
+Một khung cảnh có mèo.
+Một khung cảnh có chó.
+Một khung cảnh có ngựa.
+Một khung cảnh có cừu.
+Một khung cảnh có bò.
+Một khung cảnh có voi.
+Một khung cảnh có gấu.
+Một khung cảnh có ngựa vằn.
+Một khung cảnh có hươu cao cổ.
+Một khung cảnh có mũ.
+Một khung cảnh có ba lô.
+Một khung cảnh có ô.
+Một khung cảnh có giày.
+Một khung cảnh có kính mắt.
+Một khung cảnh có túi xách.
+Một khung cảnh có cà vạt.
+Một khung cảnh có vali.
+Một khung cảnh có đĩa bay.
+Một khung cảnh có ván trượt tuyết.
+Một khung cảnh có bóng thể thao.
+Một khung cảnh có diều.
+Một khung cảnh có gậy bóng chày.
+Một khung cảnh có găng tay bóng chày.
+Một khung cảnh có ván trượt.
+Một khung cảnh có ván lướt sóng.
+Một khung cảnh có vợt tennis.
+Một khung cảnh có chai.
+Một khung cảnh có đĩa.
+Một khung cảnh có cốc rượu.
+Một khung cảnh có cốc.
+Một khung cảnh có nĩa.
+Một khung cảnh có dao.
+Một khung cảnh có muỗng.
+Một khung cảnh có bát.
+Một khung cảnh có chuối.
+Một khung cảnh có táo.
+Một khung cảnh có bánh mì kẹp.
+Một khung cảnh có cam.
+Một khung cảnh có bông cải xanh.
+Một khung cảnh có cà rốt.
+Một khung cảnh có xúc xích.
+Một khung cảnh có pizza.
+Một khung cảnh có bánh rán.
+Một khung cảnh có bánh ngọt.
+Một khung cảnh có ghế.
+Một khung cảnh có ghế sofa.
+Một khung cảnh có cây trong chậu.
+Một khung cảnh có giường.
+Một khung cảnh có gương.
+Một khung cảnh có bàn ăn.
+Một khung cảnh có cửa sổ.
+Một khung cảnh có bàn làm việc.
+Một khung cảnh có bồn cầu.
+Một khung cảnh có cửa.
+Một khung cảnh có tivi.
+Một khung cảnh có máy tính xách tay.
+Một khung cảnh có chuột.
+Một khung cảnh có điều khiển từ xa.
+Một khung cảnh có bàn phím.
+Một khung cảnh có điện thoại di động.
+Một khung cảnh có lò vi sóng.
+Một khung cảnh có lò nướng.
+Một khung cảnh có máy nướng bánh mì.
+Một khung cảnh có bồn rửa.
+Một khung cảnh có tủ lạnh.
+Một khung cảnh có máy xay sinh tố.
+Một khung cảnh có sách.
+Một khung cảnh có đồng hồ.
+Một khung cảnh có bình hoa.
+Một khung cảnh có kéo.
+Một khung cảnh có gấu bông.
+Một khung cảnh có máy sấy tóc.
+Một khung cảnh có bàn chải đánh răng.
+Một khung cảnh có lược.

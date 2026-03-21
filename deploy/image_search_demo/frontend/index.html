@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            padding: 16px;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid #e8e8e8;
+            background: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            background: transparent;
+            color: #999;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 0;
+        }
+
+        .tab-button:hover {
+            color: #666;
+        }
+
+        .tab-button.active {
+            color: #1a1a1a;
+            border-bottom-color: #1a1a1a;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 0 0 12px 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+            border: 1px solid #e8e8e8;
+            border-top: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .search-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 14px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .search-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        #textInput {
+            flex: 1;
+            padding: 14px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            background: white;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #textInput::placeholder {
+            color: #999;
+        }
+
+        #textInput:focus {
+            outline: none;
+            border-color: #333;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 16px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            color: #333;
+            white-space: nowrap;
+            min-height: 44px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        button:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #textSearchBtn, #imageSearchBtn {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+            font-weight: 700;
+            width: 100%;
+            display: block;
+            margin: 0;
+        }
+
+        #textSearchBtn:hover, #imageSearchBtn:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        #textSearchBtn:disabled, #imageSearchBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #captureBtn.has-image {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        #captureBtn.has-image:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .preview-container {
+            margin-top: 16px;
+            max-height: 280px;
+            overflow: hidden;
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #e8e8e8;
+            width: 100%;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 14px 14px;
+            border-radius: 8px;
+            margin-top: 14px;
+            font-size: 13px;
+            display: none;
+            animation: slideIn 0.3s ease;
+            border: 1px solid #fcc;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-section {
+            margin-top: 24px;
+        }
+
+        .results-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .result-card:hover {
+            border-color: #999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .result-content {
+            padding: 10px 12px;
+        }
+
+        .result-id {
+            font-size: 10px;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .result-caption {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-text {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .camera-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .camera-modal.active {
+            display: flex;
+        }
+
+        .camera-content {
+            width: 100%;
+            max-width: 600px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #cameraVideo, #capturedCanvas {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        #capturedCanvas {
+            display: none;
+        }
+
+        .camera-controls {
+            width: 100%;
+            padding: 20px;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .camera-buttons {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #takePhotoBtn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 48px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        #takePhotoBtn:hover {
+            background: #f0f0f0;
+        }
+
+        #takePhotoBtn:active {
+            transform: scale(0.98);
+        }
+
+        .camera-action-btn {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 44px;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .camera-action-btn:hover {
+            background: #444;
+            border-color: #666;
+        }
+
+        .camera-action-btn:active {
+            transform: scale(0.98);
+        }
+
+        #cancelBtn {
+            background: transparent;
+            border-color: #666;
+        }
+
+        #cancelBtn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .camera-status {
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 601px) {
+            body {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+
+            .tagline {
+                font-size: 15px;
+            }
+
+            .tabs {
+                border-radius: 12px 12px 0 0;
+            }
+
+            .search-section {
+                padding: 32px;
+                margin-bottom: 40px;
+                border-radius: 0 0 12px 12px;
+            }
+
+            .tab-button {
+                padding: 18px 20px;
+                font-size: 13px;
+            }
+
+            .search-label {
+                font-size: 13px;
+                margin-bottom: 16px;
+            }
+
+            .search-inputs {
+                flex-direction: row;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            #textInput {
+                flex: 1;
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .button-group {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            button {
+                padding: 11px 20px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            #textSearchBtn, #imageSearchBtn {
+                padding: 11px 20px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            #captureBtn {
+                padding: 11px 20px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            .preview-container {
+                margin-top: 20px;
+                max-height: 220px;
+            }
+
+            #imagePreview {
+                max-height: 220px;
+            }
+
+            .error-message {
+                padding: 12px 14px;
+                margin-top: 16px;
+                font-size: 13px;
+            }
+
+            .results-section {
+                margin-top: 40px;
+            }
+
+            .results-header {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+
+            .result-image {
+                height: 160px;
+            }
+
+            .result-content {
+                padding: 16px;
+            }
+
+            .result-caption {
+                font-size: 13px;
+            }
+
+            .empty-state {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Search</h1>
+            <p class="tagline">Find images by text or visual similarity</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="text-search">Search by Text</button>
+            <button class="tab-button" data-tab="image-search">Capture Image</button>
+        </div>
+
+        <div class="search-section">
+            <!-- Text Search Tab -->
+            <div id="text-search" class="tab-content active">
+                <label class="search-label">Enter Your Search Query</label>
+                <div class="search-inputs">
+                    <input 
+                        type="text" 
+                        id="textInput" 
+                        placeholder="What are you looking for? (e.g., 'red car', 'sunset')"
+                    >
+                </div>
+                <button id="textSearchBtn" class="button-group" style="display: flex; width: 100%; justify-content: center;">Search</button>
+                <div id="textErrorMessage" class="error-message"></div>
+            </div>
+
+            <!-- Image Search Tab -->
+            <div id="image-search" class="tab-content">
+                <label class="search-label">Capture or Upload Image</label>
+                <button id="captureBtn" class="button-group" style="display: flex; width: 100%; justify-content: center; margin-bottom: 16px;">
+                    Capture Image
+                </button>
+                <input type="file" id="fileInput" accept="image/*">
+                <div id="previewContainer" class="preview-container"></div>
+                <button id="imageSearchBtn" class="button-group" style="display: flex; width: 100%; justify-content: center;">Search</button>
+                <div id="imageErrorMessage" class="error-message"></div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div id="resultsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Camera Modal -->
+    <div id="cameraModal" class="camera-modal">
+        <div class="camera-content">
+            <div style="width: 100%; position: relative;">
+                <video id="cameraVideo" playsinline></video>
+                <canvas id="capturedCanvas"></canvas>
+            </div>
+            <div class="camera-controls">
+                <div class="camera-status" id="cameraStatus">Position camera</div>
+                <div class="camera-buttons">
+                    <button id="takePhotoBtn">Take Photo</button>
+                </div>
+                <div class="camera-buttons" id="confirmButtons" style="display: none;">
+                    <button class="camera-action-btn" id="usePhotoBtn">Use Photo</button>
+                    <button class="camera-action-btn" id="retakeBtn">Retake</button>
+                </div>
+                <button class="camera-action-btn" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            selectedImageBase64: null,
+            cameraStream: null,
+            photoCaptured: false,
+            activeTab: 'text-search',
+        };
+
+        // DOM Elements
+        const textInput = document.getElementById('textInput');
+        const captureBtn = document.getElementById('captureBtn');
+        const fileInput = document.getElementById('fileInput');
+        const textSearchBtn = document.getElementById('textSearchBtn');
+        const imageSearchBtn = document.getElementById('imageSearchBtn');
+        const previewContainer = document.getElementById('previewContainer');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const textErrorMessage = document.getElementById('textErrorMessage');
+        const imageErrorMessage = document.getElementById('imageErrorMessage');
+
+        const cameraModal = document.getElementById('cameraModal');
+        const cameraVideo = document.getElementById('cameraVideo');
+        const capturedCanvas = document.getElementById('capturedCanvas');
+        const takePhotoBtn = document.getElementById('takePhotoBtn');
+        const usePhotoBtn = document.getElementById('usePhotoBtn');
+        const retakeBtn = document.getElementById('retakeBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const confirmButtons = document.getElementById('confirmButtons');
+        const cameraStatus = document.getElementById('cameraStatus');
+
+        // const API_URL = 'http://localhost:5002/api/search';
+        const API_URL = 'http://192.168.0.100:5002/api/search';
+
+        // Tab Management
+        function switchTab(tabName) {
+            state.activeTab = tabName;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+            });
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.toggle('active', content.getAttribute('id') === tabName);
+            });
+            
+            // Clear all inputs and preview when switching tabs
+            textInput.value = '';
+            state.selectedImageBase64 = null;
+            previewContainer.innerHTML = '';
+            captureBtn.classList.remove('has-image');
+        }
+
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                switchTab(e.target.getAttribute('data-tab'));
+            });
+        });
+
+        function showError(message, isImageTab = false) {
+            const errorMsg = isImageTab ? imageErrorMessage : textErrorMessage;
+            errorMsg.textContent = message;
+            errorMsg.classList.add('show');
+            setTimeout(() => errorMsg.classList.remove('show'), 5000);
+        }
+
+        function resizeImage(file, callback) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 224;
+                    canvas.height = 224;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Center crop to square, then scale to 224x224
+                    const size = Math.min(img.width, img.height);
+                    const sx = (img.width - size) / 2;
+                    const sy = (img.height - size) / 2;
+                    
+                    ctx.drawImage(img, sx, sy, size, size, 0, 0, 224, 224);
+                    callback(canvas.toDataURL('image/jpeg').split(',')[1]);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayPreview(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewContainer.innerHTML = `<img id="imagePreview" src="${e.target.result}" alt="Preview">`;
+                captureBtn.classList.add('has-image');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function closeCameraModal() {
+            cameraModal.classList.remove('active');
+            state.photoCaptured = false;
+            confirmButtons.style.display = 'none';
+            takePhotoBtn.style.display = 'block';
+            
+            // Reset display state for next time camera is opened
+            cameraVideo.style.display = 'block';
+            capturedCanvas.style.display = 'none';
+            cameraStatus.textContent = '';
+            
+            // Clear the captured image
+            const ctx = capturedCanvas.getContext('2d');
+            ctx.clearRect(0, 0, capturedCanvas.width, capturedCanvas.height);
+            
+            if (state.cameraStream) {
+                state.cameraStream.getTracks().forEach(track => track.stop());
+                state.cameraStream = null;
+            }
+        }
+
+        function startCamera() {
+            // Reset camera modal state
+            cameraVideo.style.display = 'block';
+            capturedCanvas.style.display = 'none';
+            takePhotoBtn.style.display = 'block';
+            confirmButtons.style.display = 'none';
+            state.photoCaptured = false;
+            
+            cameraModal.classList.add('active');
+            cameraStatus.textContent = 'Loading camera...';
+            
+            if (navigator.mediaDevices?.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment',
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                })
+                    .then((stream) => {
+                        state.cameraStream = stream;
+                        cameraVideo.srcObject = stream;
+                        cameraVideo.play();
+                        cameraStatus.textContent = 'Ready to capture';
+                    })
+                    .catch((error) => {
+                        console.error('Camera error:', error);
+                        cameraStatus.textContent = 'Camera not available';
+                        showError('Camera access denied. Using file upload instead.', true);
+                        closeCameraModal();
+                        setTimeout(() => fileInput.click(), 500);
+                    });
+            } else {
+                showError('Camera not supported on this device.', true);
+                closeCameraModal();
+                fileInput.click();
+            }
+        }
+
+        function capturePhoto() {
+            if (!cameraVideo.srcObject) return;
+
+            const videoTrack = state.cameraStream.getVideoTracks()[0];
+            const settings = videoTrack.getSettings();
+            
+            capturedCanvas.width = settings.width;
+            capturedCanvas.height = settings.height;
+            
+            const ctx = capturedCanvas.getContext('2d');
+            ctx.drawImage(cameraVideo, 0, 0);
+            
+            cameraVideo.style.display = 'none';
+            capturedCanvas.style.display = 'block';
+            
+            takePhotoBtn.style.display = 'none';
+            confirmButtons.style.display = 'flex';
+            cameraStatus.textContent = 'Photo captured. Confirm or retake?';
+            state.photoCaptured = true;
+        }
+
+        function retakePhoto() {
+            cameraVideo.style.display = 'block';
+            capturedCanvas.style.display = 'none';
+            
+            takePhotoBtn.style.display = 'block';
+            confirmButtons.style.display = 'none';
+            cameraStatus.textContent = 'Ready to capture';
+            state.photoCaptured = false;
+        }
+
+        function usePhoto() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 224;
+            canvas.height = 224;
+            const ctx = canvas.getContext('2d');
+            
+            // Center crop to square, then scale to 224x224
+            const size = Math.min(capturedCanvas.width, capturedCanvas.height);
+            const sx = (capturedCanvas.width - size) / 2;
+            const sy = (capturedCanvas.height - size) / 2;
+            
+            ctx.drawImage(capturedCanvas, sx, sy, size, size, 0, 0, 224, 224);
+            
+            state.selectedImageBase64 = canvas.toDataURL('image/jpeg').split(',')[1];
+            
+            previewContainer.innerHTML = `<img id="imagePreview" src="${canvas.toDataURL('image/jpeg')}" alt="Captured">`;
+            captureBtn.classList.add('has-image');
+            
+            closeCameraModal();
+        }
+
+        captureBtn.addEventListener('click', startCamera);
+        takePhotoBtn.addEventListener('click', capturePhoto);
+        usePhotoBtn.addEventListener('click', usePhoto);
+        retakeBtn.addEventListener('click', retakePhoto);
+        cancelBtn.addEventListener('click', closeCameraModal);
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                displayPreview(file);
+                resizeImage(file, (base64) => { state.selectedImageBase64 = base64; });
+            }
+        });
+
+        async function performSearch() {
+            if (state.activeTab === 'text-search') {
+                const text = textInput.value.trim();
+                if (!text) {
+                    showError('Please enter a search query', false);
+                    return;
+                }
+                await search({ query_text: text });
+            } else {
+                if (!state.selectedImageBase64) {
+                    showError('Please capture or upload an image', true);
+                    return;
+                }
+                await search({ query_image: state.selectedImageBase64 });
+            }
+        }
+
+        async function search(payload) {
+            textSearchBtn.disabled = true;
+            imageSearchBtn.disabled = true;
+            resultsContainer.innerHTML = '';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) throw new Error(`Server error: ${response.status}`);
+                const data = await response.json();
+                renderResults(data);
+            } catch (error) {
+                const isImageTab = state.activeTab === 'image-search';
+                showError('Search failed. Please try again.', isImageTab);
+                resultsContainer.innerHTML = '<div class="empty-state"><p class="empty-state-text">Unable to fetch results at this time.</p></div>';
+            } finally {
+                textSearchBtn.disabled = false;
+                imageSearchBtn.disabled = false;
+            }
+        }
+
+        function renderResults(results) {
+            if (!results || results.length === 0) {
+                resultsContainer.innerHTML = '<div class="empty-state"><p class="empty-state-text">No matching images found</p></div>';
+                return;
+            }
+
+            const html = `
+                <div class="results-header">Results (${results.length})</div>
+                <div class="results-grid">
+                    ${results.map(item => `
+                        <div class="result-card">
+                            <img src="${item.image_url}" alt="${item.caption}" class="result-image">
+                            <div class="result-content">
+                                <div class="result-id">${item.caption_id}</div>
+                                <div class="result-caption">${item.caption}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            resultsContainer.innerHTML = html;
+        }
+
+        textSearchBtn.addEventListener('click', performSearch);
+        imageSearchBtn.addEventListener('click', performSearch);
+        
+        textInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && state.activeTab === 'text-search' && !textSearchBtn.disabled) {
+                performSearch();
+            }
+        });
+
+        // Close modal when clicking outside
+        cameraModal.addEventListener('click', (e) => {
+            if (e.target === cameraModal) closeCameraModal();
+        });
+
+        window.addEventListener('load', () => {
+            renderResults([]);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# ONNX Inference Requirements
+# Install with: pip install -r requirements_onnx.txt
+
+# Core dependencies
+torch>=1.9.0
+torchvision>=0.10.0
+transformers>=4.0.0
+
+# ONNX
+onnx>=1.12.0
+onnxruntime>=1.14.0  # For CPU inference
+# onnxruntime-gpu>=1.14.0  # Uncomment for GPU inference
+
+# Image processing
+Pillow>=8.0.0
+opencv-python>=4.5.0
+
+# Database
+chromadb>=0.3.21
+
+# NLP & Text processing
+underthesea>=1.3.2
+
+# Utilities
+numpy>=1.20.0
+scikit-learn>=0.24.0
